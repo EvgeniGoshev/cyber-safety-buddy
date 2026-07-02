@@ -216,6 +216,7 @@ button:hover {
 
 .password-message {
   margin-top: 12px;
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -238,34 +239,32 @@ button:hover {
 }
 
 .password-checklist li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
   margin: 8px 0;
-  padding: 10px 12px;
+  padding: 12px;
   border-radius: 6px;
-  background: #f1f5f9;
+  background: #fdecec;
+  color: var(--bad);
   animation: fadeUp 0.7s ease both;
 }
 
-.password-checklist li::before {
-  margin-right: 8px;
-  font-weight: bold;
+.password-checklist li strong {
+  font-size: 13px;
 }
 
 .password-checklist li.passed {
-  color: var(--good);
   background: #eaf7ee;
+  color: var(--good);
 }
 
-.password-checklist li.passed::before {
-  content: "✓";
+.password-checklist li.passed strong {
+  color: var(--good);
 }
 
-.password-checklist li.failed {
+.password-checklist li.failed strong {
   color: var(--bad);
-  background: #fdecec;
-}
-
-.password-checklist li.failed::before {
-  content: "!";
 }
 
 .quiz-top {
@@ -275,17 +274,47 @@ button:hover {
   font-weight: bold;
 }
 
-.message-box {
-  min-height: 120px;
+.quiz-scene {
+  min-height: 240px;
   padding: 16px;
   margin-top: 14px;
   background: #edf5f8;
-  border-left: 5px solid var(--primary);
   border-radius: 8px;
+  animation: cardRise 0.7s ease both;
 }
 
-.message-box p {
-  margin: 0;
+.fake-message {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(21, 32, 51, 0.12);
+}
+
+.fake-message-header {
+  padding: 12px;
+  color: white;
+  background: var(--primary);
+  font-weight: bold;
+}
+
+.fake-message-body {
+  padding: 16px;
+}
+
+.fake-message-body h4 {
+  margin: 0 0 10px;
+  font-size: 22px;
+}
+
+.fake-link {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #1f7a8c;
+  font-weight: bold;
 }
 
 .quiz-buttons {
@@ -402,5 +431,9 @@ button:hover {
 
   .hero p {
     font-size: 20px;
+  }
+
+  .password-checklist li {
+    flex-direction: column;
   }
 }
