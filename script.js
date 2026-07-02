@@ -2,52 +2,97 @@ const passwordBox = document.getElementById("passwordBox");
 const showPassword = document.getElementById("showPassword");
 const passwordMessage = document.getElementById("passwordMessage");
 
-const predictablePasswords = [
+const lengthCheck = document.getElementById("lengthCheck");
+const bigLetterCheck = document.getElementById("bigLetterCheck");
+const numberCheck = document.getElementById("numberCheck");
+const symbolCheck = document.getElementById("symbolCheck");
+const predictableCheck = document.getElementById("predictableCheck");
+const repeatCheck = document.getElementById("repeatCheck");
+
+const badPasswordParts = [
+  "123456",
   "123456789",
   "987654321",
-  "123456",
   "password",
   "qwerty",
-  "111111"
+  "111111",
+  "abc123",
+  "admin",
+  "letmein"
 ];
 
 showPassword.addEventListener("change", function () {
   passwordBox.type = showPassword.checked ? "text" : "password";
 });
 
-passwordBox.addEventListener("input", function () {
+passwordBox.addEventListener("input", checkPassword);
+
+function checkPassword() {
   const password = passwordBox.value;
   const lowerPassword = password.toLowerCase();
 
-  let score = 0;
+  const hasEnoughLength = password.length >= 12;
+  const hasBigLetter = /[A-Z]/.test(password);
+  const hasSmallLetter = /[a-z]/.test(password);
+  const hasNumber = /[0-9]/.test(password);
+  const hasSymbol = /[^A-Za-z0-9]/.test(password);
+  const hasRepeatedLetters = /([a-zA-Z])\1/.test(password);
+  const startsWithA = lowerPassword.startsWith("a");
 
-  if (password.length >= 8) score++;
-  if (password.length >= 12) score++;
-  if (/[a-z]/.test(password)) score++;
-  if (/[A-Z]/.test(password)) score++;
-  if (/[0-9]/.test(password)) score++;
-  if (/[^A-Za-z0-9]/.test(password)) score++;
-
-  const isPredictable = predictablePasswords.some(function (badPassword) {
-    return lowerPassword.includes(badPassword);
+  const hasBadPart = badPasswordParts.some(function (badPart) {
+    return lowerPassword.includes(badPart);
   });
 
-  if (isPredictable) score = 0;
+  const isTooSimplePattern = /^[A-Z][a-z][0-9]{5}[^A-Za-z0-9]$/.test(password);
+  const looksLeaked = hasBadPart || isTooSimplePattern;
+
+  updateCheck(lengthCheck, hasEnoughLength);
+  updateCheck(bigLetterCheck, hasBigLetter);
+  updateCheck(numberCheck, hasNumber);
+  updateCheck(symbolCheck, hasSymbol);
+  updateCheck(predictableCheck, !looksLeaked);
+  updateCheck(repeatCheck, !hasRepeatedLetters && !startsWithA);
+
+  let score = 0;
+
+  if (hasEnoughLength) score += 2;
+  if (password.length >= 16) score += 1;
+  if (hasBigLetter) score += 1;
+  if (hasSmallLetter) score += 1;
+  if (hasNumber) score += 1;
+  if (hasSymbol) score += 1;
+
+  if (looksLeaked) score -= 4;
+  if (hasRepeatedLetters) score -= 2;
+  if (startsWithA) score -= 1;
+  if (isTooSimplePattern) score -= 4;
+  if (password.length < 8) score -= 3;
 
   if (password.length === 0) {
     passwordMessage.textContent = "Start typing to check it.";
     passwordMessage.className = "password-message";
-  } else if (score <= 2) {
-    passwordMessage.textContent = "Weak";
+    return;
+  }
+
+  if (score <= 2) {
+    passwordMessage.textContent = "Weak - this password is easy to guess.";
     passwordMessage.className = "password-message weak";
-  } else if (score <= 4) {
-    passwordMessage.textContent = "Okey";
+  } else if (score <= 5) {
+    passwordMessage.textContent = "Okey - better, but still not strong enough.";
     passwordMessage.className = "password-message okey";
   } else {
-    passwordMessage.textContent = "Strong";
+    passwordMessage.textContent = "Strong - this password is much safer.";
     passwordMessage.className = "password-message strong";
   }
-});
+}
+
+function updateCheck(item, passed) {
+  if (passed) {
+    item.className = "passed";
+  } else {
+    item.className = "failed";
+  }
+}
 
 const quizCard = document.getElementById("quizCard");
 const levelText = document.getElementById("levelText");
