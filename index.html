@@ -87,8 +87,8 @@
           <section class="tool-card">
             <h3>Password Checker</h3>
             <p>
-              Type a password and check what makes it weak or strong. A strong
-              password should be long, mixed, and not predictable.
+              Type a password and check what is missing. Green means it meets the
+              rule. Red means не отговаря на изискванията.
             </p>
 
             <input id="passwordBox" type="password" placeholder="Try a password">
@@ -103,12 +103,22 @@
             </p>
 
             <ul class="password-checklist">
-              <li id="lengthCheck">At least 12 characters</li>
-              <li id="bigLetterCheck">Has a big letter</li>
-              <li id="numberCheck">Has a number</li>
-              <li id="symbolCheck">Has a special symbol</li>
-              <li id="predictableCheck">Not predictable or leaked-looking</li>
-              <li id="repeatCheck">No repeated letters like aa or bb</li>
+              <li id="lengthCheck">
+                <span>At least 12 characters</span>
+                <strong>не отговаря на изискванията</strong>
+              </li>
+              <li id="bigLetterCheck">
+                <span>Has a big letter</span>
+                <strong>не отговаря на изискванията</strong>
+              </li>
+              <li id="numberCheck">
+                <span>Has a number</span>
+                <strong>не отговаря на изискванията</strong>
+              </li>
+              <li id="symbolCheck">
+                <span>Has a special symbol</span>
+                <strong>не отговаря на изискванията</strong>
+              </li>
             </ul>
           </section>
 
@@ -120,9 +130,7 @@
               <p id="scoreText">Score: 0</p>
             </div>
 
-            <div class="message-box">
-              <p id="quizMessage"></p>
-            </div>
+            <div id="quizScene" class="quiz-scene"></div>
 
             <div class="quiz-buttons">
               <button id="scamButton" type="button">Scam</button>
