@@ -8,7 +8,7 @@
   </head>
 
   <body>
-    <header class="hero">
+    <header class="hero reveal">
       <div class="hero-content">
         <p class="eyebrow">Cyber Safety Buddy</p>
         <h1>Learn how to stay safe on the internet</h1>
@@ -21,7 +21,7 @@
     </header>
 
     <main>
-      <section class="intro-section">
+      <section class="intro-section reveal">
         <div>
           <h2>Why internet safety matters</h2>
           <p>
@@ -36,60 +36,45 @@
           </p>
         </div>
 
-        <div class="info-panel">
+        <div class="info-panel reveal">
           <h3>Remember</h3>
           <p>Stop. Think. Check the link. Protect your password.</p>
         </div>
       </section>
 
-      <section class="tips-section">
+      <section class="tips-section reveal">
         <h2>Big Safety Tips</h2>
 
         <div class="tips-grid">
-          <article class="tip-card">
+          <article class="tip-card reveal">
             <h3>Use strong passwords</h3>
-            <p>
-              Make passwords long. Mix uppercase letters, lowercase letters,
-              numbers, and symbols. Do not use your name, birthday, or 123456789.
-            </p>
+            <p>Make passwords long. Mix uppercase letters, lowercase letters, numbers, and symbols.</p>
           </article>
 
-          <article class="tip-card">
+          <article class="tip-card reveal">
             <h3>Check links before clicking</h3>
-            <p>
-              Scammers often use links that look close to real websites. If a link
-              looks strange, do not click it.
-            </p>
+            <p>Scammers often use links that look close to real websites. If a link looks strange, do not click it.</p>
           </article>
 
-          <article class="tip-card">
+          <article class="tip-card reveal">
             <h3>Do not share private info</h3>
-            <p>
-              Never send passwords, card numbers, or login codes in messages.
-              Real support teams should not ask for your password.
-            </p>
+            <p>Never send passwords, card numbers, or login codes in messages.</p>
           </article>
 
-          <article class="tip-card">
+          <article class="tip-card reveal">
             <h3>Use two-factor login</h3>
-            <p>
-              Two-factor authentication adds a second step when logging in. It can
-              protect you even if someone learns your password.
-            </p>
+            <p>Two-factor authentication adds a second step and helps protect your account.</p>
           </article>
         </div>
       </section>
 
-      <section class="tools-section">
+      <section class="tools-section reveal">
         <h2>Try the safety tools</h2>
 
         <div class="tools-grid">
-          <section class="tool-card">
+          <section class="tool-card reveal">
             <h3>Password Checker</h3>
-            <p>
-              Type a password and check what is missing. Green means it meets the
-              rule. Red means не отговаря на изискванията.
-            </p>
+            <p>Check what is missing. Red means the rule is missing. Green means the rule is met.</p>
 
             <input id="passwordBox" type="password" placeholder="Try a password">
 
@@ -98,31 +83,34 @@
               Show password
             </label>
 
-            <p id="passwordMessage" class="password-message">
-              Start typing to check it.
-            </p>
+            <div class="strength-box">
+              <p id="passwordMessage" class="password-message">Password strength: Not checked</p>
+              <div class="strength-track">
+                <div id="strengthFill" class="strength-fill"></div>
+              </div>
+            </div>
 
             <ul class="password-checklist">
               <li id="lengthCheck">
                 <span>At least 12 characters</span>
-                <strong>не отговаря на изискванията</strong>
+                <strong>Does not meet requirement</strong>
               </li>
               <li id="bigLetterCheck">
-                <span>Has a big letter</span>
-                <strong>не отговаря на изискванията</strong>
+                <span>Has an uppercase letter</span>
+                <strong>Does not meet requirement</strong>
               </li>
               <li id="numberCheck">
                 <span>Has a number</span>
-                <strong>не отговаря на изискванията</strong>
+                <strong>Does not meet requirement</strong>
               </li>
               <li id="symbolCheck">
                 <span>Has a special symbol</span>
-                <strong>не отговаря на изискванията</strong>
+                <strong>Does not meet requirement</strong>
               </li>
             </ul>
           </section>
 
-          <section class="tool-card quiz-card" id="quizCard">
+          <section class="tool-card quiz-card reveal" id="quizCard">
             <h3>Spot the Phishing</h3>
 
             <div class="quiz-top">
@@ -139,9 +127,7 @@
 
             <p id="feedbackText" class="feedback-text">Choose Scam or Safe.</p>
 
-            <button id="nextButton" class="next-button" type="button">
-              Next Question
-            </button>
+            <button id="nextButton" class="next-button" type="button">Next Question</button>
           </section>
         </div>
       </section>
