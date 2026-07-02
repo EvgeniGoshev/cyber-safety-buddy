@@ -1,6 +1,7 @@
 const passwordBox = document.getElementById("passwordBox");
 const showPassword = document.getElementById("showPassword");
 const passwordMessage = document.getElementById("passwordMessage");
+const strengthFill = document.getElementById("strengthFill");
 
 const lengthCheck = document.getElementById("lengthCheck");
 const bigLetterCheck = document.getElementById("bigLetterCheck");
@@ -65,17 +66,21 @@ function checkPassword() {
   if (password.length < 10) score -= 3;
 
   if (password.length === 0) {
-    passwordMessage.textContent = "Start typing to check it.";
+    passwordMessage.textContent = "Password strength: Not checked";
     passwordMessage.className = "password-message";
+    strengthFill.className = "strength-fill";
   } else if (score <= 2) {
-    passwordMessage.textContent = "Weak";
+    passwordMessage.textContent = "Password strength: Weak";
     passwordMessage.className = "password-message weak";
+    strengthFill.className = "strength-fill weak";
   } else if (score <= 5) {
-    passwordMessage.textContent = "Okey";
+    passwordMessage.textContent = "Password strength: Okey";
     passwordMessage.className = "password-message okey";
+    strengthFill.className = "strength-fill okey";
   } else {
-    passwordMessage.textContent = "Strong";
+    passwordMessage.textContent = "Password strength: Strong";
     passwordMessage.className = "password-message strong";
+    strengthFill.className = "strength-fill strong";
   }
 }
 
@@ -84,12 +89,14 @@ function updateCheck(item, passed) {
 
   if (passed) {
     item.className = "passed";
-    status.textContent = "отговаря";
+    status.textContent = "Meets requirement";
   } else {
     item.className = "failed";
-    status.textContent = "не отговаря на изискванията";
+    status.textContent = "Does not meet requirement";
   }
 }
+
+checkPassword();
 
 const quizCard = document.getElementById("quizCard");
 const levelText = document.getElementById("levelText");
@@ -105,48 +112,54 @@ const questions = [
     level: "Easy",
     sender: "Bank Security",
     title: "Account locked",
-    body: "Your account closes today. Verify now.",
     link: "bank-login-security-now.ru",
+    badge: "Verify now",
+    style: "warning",
     answer: "Scam"
   },
   {
     level: "Easy",
     sender: "School Portal",
     title: "Homework update",
-    body: "New homework is available in your official school account.",
     link: "school.edu/homework",
+    badge: "Official portal",
+    style: "safe",
     answer: "Safe"
   },
   {
     level: "Normal",
     sender: "Netflx Billing",
     title: "Payment failed",
-    body: "Update your card to keep watching.",
     link: "netflx-payment-help.com",
+    badge: "Update card",
+    style: "warning",
     answer: "Scam"
   },
   {
     level: "Normal",
     sender: "Game Account",
     title: "New login",
-    body: "Open the official app to review your recent login.",
-    link: "official game app",
+    link: "Open official app",
+    badge: "Review in app",
+    style: "safe",
     answer: "Safe"
   },
   {
     level: "Hard",
     sender: "IT Support",
     title: "Fast account repair",
-    body: "Send your password so we can fix your account faster.",
-    link: "reply with password",
+    link: "Reply with password",
+    badge: "Password request",
+    style: "warning",
     answer: "Scam"
   },
   {
     level: "Hard",
     sender: "Delivery Tracking",
     title: "Package delayed",
-    body: "Use the tracking number on the official delivery website.",
-    link: "official delivery website",
+    link: "Official delivery website",
+    badge: "Track safely",
+    style: "safe",
     answer: "Safe"
   }
 ];
@@ -162,19 +175,24 @@ function showQuestion() {
   scoreText.textContent = "Score: " + quizScore;
 
   quizScene.innerHTML = `
-    <div class="fake-message">
-      <div class="fake-message-header">${currentQuestion.sender}</div>
-      <div class="fake-message-body">
+    <div class="visual-card">
+      <div class="visual-header">
+        <span>${currentQuestion.sender}</span>
+        <span>${currentQuestion.level}</span>
+      </div>
+      <div class="visual-body">
         <h4>${currentQuestion.title}</h4>
-        <p>${currentQuestion.body}</p>
-        <span class="fake-link">${currentQuestion.link}</span>
+        <div class="visual-line"></div>
+        <div class="visual-line"></div>
+        <div class="visual-line short"></div>
+        <span class="visual-link">${currentQuestion.link}</span>
+        <div class="visual-${currentQuestion.style}">${currentQuestion.badge}</div>
       </div>
     </div>
   `;
 
   feedbackText.textContent = "Choose Scam or Safe.";
   feedbackText.className = "feedback-text";
-
   scamButton.disabled = false;
   safeButton.disabled = false;
   nextButton.style.display = "none";
@@ -240,3 +258,19 @@ nextButton.addEventListener("click", function () {
 });
 
 showQuestion();
+
+const revealItems = document.querySelectorAll(".reveal");
+
+const observer = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("is-visible");
+    }
+  });
+}, {
+  threshold: 0.15
+});
+
+revealItems.forEach(function (item) {
+  observer.observe(item);
+});
