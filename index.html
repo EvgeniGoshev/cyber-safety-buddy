@@ -86,7 +86,10 @@
         <div class="tools-grid">
           <section class="tool-card">
             <h3>Password Checker</h3>
-            <p>Type a password and get a live safety rating.</p>
+            <p>
+              Type a password and check what makes it weak or strong. A strong
+              password should be long, mixed, and not predictable.
+            </p>
 
             <input id="passwordBox" type="password" placeholder="Try a password">
 
@@ -98,6 +101,15 @@
             <p id="passwordMessage" class="password-message">
               Start typing to check it.
             </p>
+
+            <ul class="password-checklist">
+              <li id="lengthCheck">At least 12 characters</li>
+              <li id="bigLetterCheck">Has a big letter</li>
+              <li id="numberCheck">Has a number</li>
+              <li id="symbolCheck">Has a special symbol</li>
+              <li id="predictableCheck">Not predictable or leaked-looking</li>
+              <li id="repeatCheck">No repeated letters like aa or bb</li>
+            </ul>
           </section>
 
           <section class="tool-card quiz-card" id="quizCard">
