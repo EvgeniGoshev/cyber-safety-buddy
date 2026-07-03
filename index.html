@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cyber Safety Buddy</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  <body>
+    <div id="trainingModal" class="training-modal">
+      <div class="training-box">
+        <button id="trainingFakeClose" class="fake-close" type="button">X</button>
+
+        <h2>Quick Access Check</h2>
+        <p>Enter your name and email to continue.</p>
+
+        <input class="training-input" type="text" placeholder="First name">
+        <input class="training-input" type="text" placeholder="Last name">
+        <input class="training-input" type="email" placeholder="Email">
+
+        <div id="trainingWarning" class="training-warning">
+          <strong>Stop. This was a safety test.</strong>
+          <span>
+            Never type private information into a random pop-up or form.
+            This page does not save anything, but a real scam page could.
+          </span>
+        </div>
+
+        <button id="trainingEnter" type="button">Enter</button>
+      </div>
+    </div>
+
+    <nav class="top-nav">
+      <a href="#basics">Safety Basics</a>
+      <a href="#password-tool">Password Checker</a>
+      <a href="#quizCard">Phishing Quiz</a>
+      <a href="#learned">What You Learned</a>
+    </nav>
+
+    <header class="hero reveal">
+      <div class="hero-content">
+        <p class="eyebrow">Cyber Safety Buddy</p>
+        <h1>Learn how to stay safe on the internet</h1>
+        <p>
+          The internet is useful for learning, games, videos, messages, shopping,
+          banking, and work. But it also has fake websites, phishing emails,
+          suspicious downloads, weak passwords, and tricks designed to make you panic.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section id="basics" class="intro-section reveal">
+        <div>
+          <h2>Why internet safety matters</h2>
+          <p>
+            Internet safety means protecting your accounts, private information,
+            photos, messages, money, and devices. A scammer may pretend to be a bank,
+            delivery company, support team, game platform, or shopping website.
+          </p>
+          <p>
+            A strong password is one of your best protections. A weak password like
+            123456789, qwerty, or password is easy to guess. A safer password is longer,
+            uses different types of characters, and avoids obvious patterns.
+          </p>
+          <p>
+            Good safety is not about being scared of the internet. It is about slowing
+            down, checking details, and not giving private information just because a
+            page or message asks for it.
+          </p>
+        </div>
+
+        <div class="info-panel reveal">
+          <h3>Remember</h3>
+          <p>Stop. Think. Check the sender. Check the link. Protect your password.</p>
+        </div>
+      </section>
+
+      <section class="tips-section reveal">
+        <h2>Big Safety Tips</h2>
+
+        <div class="tips-grid">
+          <article class="tip-card reveal">
+            <h3>Use strong passwords</h3>
+            <p>
+              A strong password is long, unique, and difficult to guess. Use uppercase
+              letters, lowercase letters, numbers, and special symbols. Avoid names,
+              birthdays, repeated letters, simple number patterns, and common passwords
+              like 123456789 or password.
+            </p>
+            <p>
+              Do not reuse the same password everywhere. If one website gets hacked,
+              attackers may try the same password on your email, bank, games, or social
+              media accounts.
+            </p>
+          </article>
+
+          <article class="tip-card reveal">
+            <h3>Check links before clicking</h3>
+            <p>
+              A suspicious link may look close to the real website, but small changes can
+              reveal the trick. For example, netflix.com is not the same as netflx-help.com.
+              Always look at the full domain before you click.
+            </p>
+            <p>
+              Be extra careful with messages that say you must act now, pay quickly, claim
+              a prize, or verify your account immediately. Urgency is one of the most common
+              phishing tricks.
+            </p>
+          </article>
+
+          <article class="tip-card reveal">
+            <h3>Do not share private info</h3>
+            <p>
+              Never send passwords, card numbers, phone numbers, login codes, or ID details
+              through random forms, pop-ups, messages, or emails. Real support teams should
+              not ask for your password.
+            </p>
+            <p>
+              If a page asks for personal information too early, stop and check who owns the
+              site. Open the official website yourself instead of trusting a link from a
+              message.
+            </p>
+          </article>
+
+          <article class="tip-card reveal">
+            <h3>Use two-factor login</h3>
+            <p>
+              Two-factor authentication adds a second step when logging in. Even if someone
+              steals your password, they may still need a code from your phone or
+              authenticator app.
+            </p>
+            <p>
+              Use two-factor login for important accounts like email, banking, GitHub,
+              social media, and work tools. Your email is especially important because it
+              can reset many other passwords.
+            </p>
+          </article>
+        </div>
+
+        <div id="linkTrapBuddy" class="link-buddy">
+          <div class="buddy-face">
+            <div class="buddy-eyes">
+              <span></span>
+              <span></span>
+            </div>
+            <div id="buddyMouth" class="buddy-mouth"></div>
+          </div>
+
+          <div class="buddy-bubble">
+            <p id="buddyText">Hey, click this super important prize link!</p>
+            <button id="suspiciousLink" type="button">
+              http://free-prize-security-check.ru
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="phishing-types-section reveal">
+        <h2>Different Types of Phishing</h2>
+
+        <div class="phishing-types-grid">
+          <article class="type-card">
+            <h3>Email phishing</h3>
+            <p>Fake emails pretend to be from trusted companies and push you to click links or open files.</p>
+          </article>
+
+          <article class="type-card">
+            <h3>Smishing</h3>
+            <p>Phishing through SMS messages, often about packages, bank alerts, or urgent payments.</p>
+          </article>
+
+          <article class="type-card">
+            <h3>Vishing</h3>
+            <p>Phone-call phishing where someone pretends to be support, a bank, or another authority.</p>
+          </article>
+
+          <article class="type-card">
+            <h3>Spear phishing</h3>
+            <p>Targeted phishing that uses your name, job, school, company, or personal details.</p>
+          </article>
+
+          <article class="type-card">
+            <h3>Clone phishing</h3>
+            <p>A real message is copied, but the link or attachment is replaced with a dangerous one.</p>
+          </article>
+
+          <article class="type-card">
+            <h3>QR phishing</h3>
+            <p>Scammers use QR codes to send you to fake login or payment pages.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="tools-section reveal">
+        <h2>Try the safety tools</h2>
+
+        <div class="tools-grid">
+          <section id="password-tool" class="tool-card reveal">
+            <h3>Password Checker</h3>
+            <p>
+              Check the password strength. The bar fills up when the password becomes
+              safer. The checker punishes repeated letters, common passwords, and
+              number patterns like 123, 321, 45, or 54.
+            </p>
+
+            <input id="passwordBox" type="password" placeholder="Try a password">
+
+            <label class="show-password">
+              <input id="showPassword" type="checkbox">
+              Show password
+            </label>
+
+            <div class="strength-box">
+              <p id="passwordMessage" class="password-message">
+                Password strength: Not checked
+              </p>
+              <div class="strength-track">
+                <div id="strengthFill" class="strength-fill"></div>
+              </div>
+            </div>
+
+            <p id="passwordReason" class="password-reason">
+              Start typing to see what makes the password weak or strong.
+            </p>
+
+            <ul class="password-checklist">
+              <li id="bigLetterCheck"><span>Uppercase letter</span><strong>Missing</strong></li>
+              <li id="numberCheck"><span>Number</span><strong>Missing</strong></li>
+              <li id="symbolCheck"><span>Special symbol</span><strong>Missing</strong></li>
+              <li id="leakedCheck"><span>Not a leaked/common password</span><strong>Missing</strong></li>
+            </ul>
+          </section>
+
+          <section id="quizCard" class="tool-card quiz-card reveal">
+            <h3>Spot the Phishing</h3>
+
+            <div class="quiz-top">
+              <p id="questionText">Question 1 of 8</p>
+              <p id="scoreText">Score: 0</p>
+            </div>
+
+            <div class="quiz-progress">
+              <div id="quizProgressFill" class="quiz-progress-fill"></div>
+            </div>
+
+            <div id="quizScene" class="quiz-scene"></div>
+
+            <div class="quiz-buttons">
+              <button id="scamButton" type="button">Scam</button>
+              <button id="safeButton" type="button">Safe</button>
+            </div>
+
+            <p id="feedbackText" class="feedback-text">Choose Scam or Safe.</p>
+
+            <button id="nextButton" class="next-button" type="button">
+              Next Question
+            </button>
+          </section>
+        </div>
+      </section>
+
+      <section id="learned" class="learned-section reveal">
+        <h2>What you learned</h2>
+
+        <div class="learned-grid">
+          <div class="learned-card">Check the sender before trusting a message.</div>
+          <div class="learned-card">Check the link before clicking anything.</div>
+          <div class="learned-card">Never share passwords or login codes.</div>
+          <div class="learned-card">Use two-factor authentication when possible.</div>
+          <div class="learned-card">Avoid common passwords and number patterns.</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Created by Evgeni Goshev</p>
+      <p>Cyber awareness demo project</p>
+    </footer>
+
+    <div id="newsletterModal" class="newsletter-modal">
+      <div class="newsletter-box">
+        <h2>Cyber Safety Newsletter</h2>
+        <p>
+          Subscribe to get the latest cyber security tips, scam alerts,
+          and password safety advice.
+        </p>
+
+        <input id="newsletterEmail" type="email" placeholder="Enter your email">
+
+        <button id="newsletterButton" type="button">
+          I agree and subscribe
+        </button>
+
+        <div id="newsletterWarning" class="newsletter-warning">
+          <div class="newsletter-character">
+            <div class="newsletter-face">
+              <span></span>
+              <span></span>
+            </div>
+          </div>
+
+          <div>
+            <strong>Stop. Think first.</strong>
+            <p>
+              Do not give your email to every pop-up. Real attackers can use your email
+              for spam, phishing, password reset attacks, or fake login messages.
+              Always check who owns the site before subscribing.
+            </p>
+          </div>
+        </div>
+
+        <button id="newsletterClose" class="newsletter-close" type="button">
+          I understand
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
