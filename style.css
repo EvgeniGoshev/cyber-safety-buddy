@@ -23,31 +23,48 @@ body {
   background: var(--background);
 }
 
-.trap-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  background: rgba(10, 18, 32, 0.72);
+.trap-banner {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 18px;
+  background: rgba(21, 32, 51, 0.94);
+  box-shadow: 0 12px 30px rgba(21, 32, 51, 0.2);
 }
 
-.trap-box {
-  width: min(440px, 100%);
-  padding: 26px;
+.trap-banner.is-hidden {
+  display: none;
+}
+
+.trap-card {
+  width: min(1050px, 100%);
+  margin: 0 auto;
+  padding: 20px;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
 }
 
-.trap-box h2 {
+.trap-card h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.trap-card p {
   margin-top: 0;
 }
 
+.trap-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
 .trap-input {
-  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
 }
 
 .trap-warning {
@@ -58,6 +75,10 @@ body {
   background: #fdecec;
   border-radius: 6px;
   font-weight: bold;
+}
+
+.trap-warning.is-visible {
+  display: block;
 }
 
 .hero {
@@ -378,6 +399,10 @@ button:hover {
 }
 
 @media (max-width: 900px) {
+  .trap-grid {
+    grid-template-columns: 1fr;
+  }
+
   .hero h1 {
     font-size: 40px;
   }
