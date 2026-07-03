@@ -8,6 +8,22 @@
   </head>
 
   <body>
+    <div id="privacyTrap" class="trap-overlay">
+      <div class="trap-box">
+        <h2>Quick Access Check</h2>
+        <p>Enter your details to continue.</p>
+
+        <input class="trap-input" type="text" placeholder="First name">
+        <input class="trap-input" type="text" placeholder="Last name">
+        <input class="trap-input" type="email" placeholder="Email">
+        <input class="trap-input" type="password" placeholder="Password">
+        <input class="trap-input" type="tel" placeholder="Phone number">
+
+        <p id="trapWarning" class="trap-warning"></p>
+        <button id="trapClose" type="button">I understand</button>
+      </div>
+    </div>
+
     <header class="hero reveal">
       <div class="hero-content">
         <p class="eyebrow">Cyber Safety Buddy</p>
@@ -48,22 +64,35 @@
         <div class="tips-grid">
           <article class="tip-card reveal">
             <h3>Use strong passwords</h3>
-            <p>Make passwords long. Mix uppercase letters, lowercase letters, numbers, and symbols.</p>
+            <p>
+              Make passwords long. Mix uppercase letters, lowercase letters,
+              numbers, and symbols. Do not use your name, birthday, or 123456789.
+            </p>
           </article>
 
           <article class="tip-card reveal">
             <h3>Check links before clicking</h3>
-            <p>Scammers often use links that look close to real websites. If a link looks strange, do not click it.</p>
+            <p>
+              Scammers often use links that look close to real websites. If a link
+              looks strange, do not click it.
+            </p>
           </article>
 
           <article class="tip-card reveal">
             <h3>Do not share private info</h3>
-            <p>Never send passwords, card numbers, or login codes in messages.</p>
+            <p>
+              Never send passwords, card numbers, phone numbers, or login codes
+              into random forms, pop-ups, or messages.
+            </p>
           </article>
 
           <article class="tip-card reveal">
             <h3>Use two-factor login</h3>
-            <p>Two-factor authentication adds a second step and helps protect your account.</p>
+            <p>
+              Two-factor authentication adds a second step when logging in. It can
+              protect you even if someone learns your password. Use an authenticator
+              app or phone code whenever an important account offers it.
+            </p>
           </article>
         </div>
       </section>
@@ -74,7 +103,10 @@
         <div class="tools-grid">
           <section class="tool-card reveal">
             <h3>Password Checker</h3>
-            <p>Check what is missing. Red means the rule is missing. Green means the rule is met.</p>
+            <p>
+              Check the password strength. The bar fills up when the password
+              becomes safer.
+            </p>
 
             <input id="passwordBox" type="password" placeholder="Try a password">
 
@@ -84,28 +116,30 @@
             </label>
 
             <div class="strength-box">
-              <p id="passwordMessage" class="password-message">Password strength: Not checked</p>
+              <p id="passwordMessage" class="password-message">
+                Password strength: Not checked
+              </p>
               <div class="strength-track">
                 <div id="strengthFill" class="strength-fill"></div>
               </div>
             </div>
 
             <ul class="password-checklist">
-              <li id="lengthCheck">
-                <span>At least 12 characters</span>
-                <strong>Does not meet requirement</strong>
-              </li>
               <li id="bigLetterCheck">
-                <span>Has an uppercase letter</span>
-                <strong>Does not meet requirement</strong>
+                <span>Uppercase letter</span>
+                <strong>Missing</strong>
               </li>
               <li id="numberCheck">
-                <span>Has a number</span>
-                <strong>Does not meet requirement</strong>
+                <span>Number</span>
+                <strong>Missing</strong>
               </li>
               <li id="symbolCheck">
-                <span>Has a special symbol</span>
-                <strong>Does not meet requirement</strong>
+                <span>Special symbol</span>
+                <strong>Missing</strong>
+              </li>
+              <li id="leakedCheck">
+                <span>Not a leaked/common password</span>
+                <strong>Missing</strong>
               </li>
             </ul>
           </section>
@@ -127,7 +161,9 @@
 
             <p id="feedbackText" class="feedback-text">Choose Scam or Safe.</p>
 
-            <button id="nextButton" class="next-button" type="button">Next Question</button>
+            <button id="nextButton" class="next-button" type="button">
+              Next Question
+            </button>
           </section>
         </div>
       </section>
