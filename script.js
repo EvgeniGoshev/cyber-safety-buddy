@@ -105,7 +105,7 @@ function checkPassword() {
 
   if (isCommonPassword) {
     score -= 4;
-    reasons.push("It contains a common or leaked-looking password.");
+    reasons.push("It contains a common password, month, or year after 2000.");
   }
 
   if (!hasBigLetter && password.length > 0) reasons.push("Add an uppercase letter.");
@@ -154,6 +154,10 @@ const trainingInputs = document.querySelectorAll(".training-input");
 const trainingWarning = document.getElementById("trainingWarning");
 const trainingEnter = document.getElementById("trainingEnter");
 const trainingFakeClose = document.getElementById("trainingFakeClose");
+
+if (localStorage.getItem("trainingCompleted") === "yes") {
+  trainingModal.classList.add("is-hidden");
+}
 
 let trainingExplained = false;
 
@@ -218,6 +222,7 @@ trainingEnter.addEventListener("click", function () {
   trainingEnter.textContent = "Continue to the site";
 
   if (trainingEnter.dataset.ready === "yes") {
+    localStorage.setItem("trainingCompleted", "yes");
     trainingModal.classList.add("is-hidden");
   }
 
