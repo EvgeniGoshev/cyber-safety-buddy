@@ -101,7 +101,7 @@ function updateCheck(item, passed) {
 
 checkPassword();
 
-const trapOverlay = document.getElementById("privacyTrap");
+const trapBanner = document.getElementById("privacyTrap");
 const trapInputs = document.querySelectorAll(".trap-input");
 const trapWarning = document.getElementById("trapWarning");
 const trapClose = document.getElementById("trapClose");
@@ -109,13 +109,12 @@ const trapClose = document.getElementById("trapClose");
 trapInputs.forEach(function (input) {
   input.addEventListener("input", function () {
     input.value = "";
-    trapWarning.style.display = "block";
-    trapWarning.textContent = "Stop. This is the lesson: never type private information into a random pop-up. Read the site first and learn how to protect your data.";
+    trapWarning.classList.add("is-visible");
   });
 });
 
 trapClose.addEventListener("click", function () {
-  trapOverlay.style.display = "none";
+  trapBanner.classList.add("is-hidden");
 });
 
 const quizCard = document.getElementById("quizCard");
