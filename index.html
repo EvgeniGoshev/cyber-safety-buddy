@@ -8,21 +8,27 @@
   </head>
 
   <body>
-    <div id="privacyTrap" class="trap-overlay">
-      <div class="trap-box">
+    <section id="privacyTrap" class="trap-banner">
+      <div class="trap-card">
         <h2>Quick Access Check</h2>
         <p>Enter your details to continue.</p>
 
-        <input class="trap-input" type="text" placeholder="First name">
-        <input class="trap-input" type="text" placeholder="Last name">
-        <input class="trap-input" type="email" placeholder="Email">
-        <input class="trap-input" type="password" placeholder="Password">
-        <input class="trap-input" type="tel" placeholder="Phone number">
+        <div class="trap-grid">
+          <input class="trap-input" type="text" placeholder="First name">
+          <input class="trap-input" type="text" placeholder="Last name">
+          <input class="trap-input" type="email" placeholder="Email">
+          <input class="trap-input" type="password" placeholder="Password">
+          <input class="trap-input" type="tel" placeholder="Phone number">
+        </div>
 
-        <p id="trapWarning" class="trap-warning"></p>
+        <p id="trapWarning" class="trap-warning">
+          Stop. This is the lesson: never type private information into a random form.
+          Read the site first and learn how to protect your data.
+        </p>
+
         <button id="trapClose" type="button">I understand</button>
       </div>
-    </div>
+    </section>
 
     <header class="hero reveal">
       <div class="hero-content">
