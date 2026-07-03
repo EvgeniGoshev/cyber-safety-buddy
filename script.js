@@ -3,21 +3,22 @@ const showPassword = document.getElementById("showPassword");
 const passwordMessage = document.getElementById("passwordMessage");
 const strengthFill = document.getElementById("strengthFill");
 
-const lengthCheck = document.getElementById("lengthCheck");
 const bigLetterCheck = document.getElementById("bigLetterCheck");
 const numberCheck = document.getElementById("numberCheck");
 const symbolCheck = document.getElementById("symbolCheck");
+const leakedCheck = document.getElementById("leakedCheck");
 
-const badPasswordParts = [
+const commonPasswords = [
+  "password",
   "123456",
   "123456789",
-  "987654321",
-  "password",
   "qwerty",
   "111111",
   "abc123",
   "admin",
-  "letmein"
+  "letmein",
+  "iloveyou",
+  "welcome"
 ];
 
 showPassword.addEventListener("change", function () {
@@ -26,59 +27,61 @@ showPassword.addEventListener("change", function () {
 
 passwordBox.addEventListener("input", checkPassword);
 
+function hasSequentialNumbers(password) {
+  const sequences = ["123", "321", "12345", "54321", "45", "54"];
+
+  return sequences.some(function (sequence) {
+    return password.includes(sequence);
+  });
+}
+
 function checkPassword() {
   const password = passwordBox.value;
   const lowerPassword = password.toLowerCase();
 
-  const hasEnoughLength = password.length >= 12;
   const hasBigLetter = /[A-Z]/.test(password);
-  const hasSmallLetter = /[a-z]/.test(password);
   const hasNumber = /[0-9]/.test(password);
   const hasSymbol = /[^A-Za-z0-9]/.test(password);
   const hasRepeatedLetters = /([a-zA-Z])\1/.test(password);
-  const startsWithA = lowerPassword.startsWith("a");
+  const hasSequence = hasSequentialNumbers(password);
 
-  const hasBadPart = badPasswordParts.some(function (badPart) {
-    return lowerPassword.includes(badPart);
+  const isCommonPassword = commonPasswords.some(function (badPassword) {
+    return lowerPassword.includes(badPassword);
   });
 
-  const simplePattern = /^[A-Z][a-z][0-9]{5}[^A-Za-z0-9]$/.test(password);
-  const looksLeaked = hasBadPart || simplePattern;
-
-  updateCheck(lengthCheck, hasEnoughLength);
   updateCheck(bigLetterCheck, hasBigLetter);
   updateCheck(numberCheck, hasNumber);
   updateCheck(symbolCheck, hasSymbol);
+  updateCheck(leakedCheck, !isCommonPassword);
 
   let score = 0;
 
-  if (hasEnoughLength) score += 2;
-  if (password.length >= 16) score += 1;
+  if (password.length >= 10) score += 1;
+  if (password.length >= 14) score += 1;
   if (hasBigLetter) score += 1;
-  if (hasSmallLetter) score += 1;
   if (hasNumber) score += 1;
   if (hasSymbol) score += 1;
+  if (!isCommonPassword) score += 1;
 
-  if (looksLeaked) score -= 4;
-  if (hasRepeatedLetters) score -= 2;
-  if (startsWithA) score -= 2;
-  if (simplePattern) score -= 4;
-  if (password.length < 10) score -= 3;
+  if (hasRepeatedLetters) score -= 3;
+  if (hasSequence) score -= 3;
+  if (isCommonPassword) score -= 4;
+  if (password.length < 8) score -= 3;
 
   if (password.length === 0) {
     passwordMessage.textContent = "Password strength: Not checked";
     passwordMessage.className = "password-message";
     strengthFill.className = "strength-fill";
   } else if (score <= 2) {
-    passwordMessage.textContent = "Password strength: Weak";
+    passwordMessage.textContent = "Weak try harder";
     passwordMessage.className = "password-message weak";
     strengthFill.className = "strength-fill weak";
   } else if (score <= 5) {
-    passwordMessage.textContent = "Password strength: Okey";
+    passwordMessage.textContent = "Okey but can be better";
     passwordMessage.className = "password-message okey";
     strengthFill.className = "strength-fill okey";
   } else {
-    passwordMessage.textContent = "Password strength: Strong";
+    passwordMessage.textContent = "Strong like a rock";
     passwordMessage.className = "password-message strong";
     strengthFill.className = "strength-fill strong";
   }
@@ -89,14 +92,31 @@ function updateCheck(item, passed) {
 
   if (passed) {
     item.className = "passed";
-    status.textContent = "Meets requirement";
+    status.textContent = "Passed";
   } else {
     item.className = "failed";
-    status.textContent = "Does not meet requirement";
+    status.textContent = "Missing";
   }
 }
 
 checkPassword();
+
+const trapOverlay = document.getElementById("privacyTrap");
+const trapInputs = document.querySelectorAll(".trap-input");
+const trapWarning = document.getElementById("trapWarning");
+const trapClose = document.getElementById("trapClose");
+
+trapInputs.forEach(function (input) {
+  input.addEventListener("input", function () {
+    input.value = "";
+    trapWarning.style.display = "block";
+    trapWarning.textContent = "Stop. This is the lesson: never type private information into a random pop-up. Read the site first and learn how to protect your data.";
+  });
+});
+
+trapClose.addEventListener("click", function () {
+  trapOverlay.style.display = "none";
+});
 
 const quizCard = document.getElementById("quizCard");
 const levelText = document.getElementById("levelText");
@@ -108,60 +128,14 @@ const safeButton = document.getElementById("safeButton");
 const nextButton = document.getElementById("nextButton");
 
 const questions = [
-  {
-    level: "Easy",
-    sender: "Bank Security",
-    title: "Account locked",
-    link: "bank-login-security-now.ru",
-    badge: "Verify now",
-    style: "warning",
-    answer: "Scam"
-  },
-  {
-    level: "Easy",
-    sender: "School Portal",
-    title: "Homework update",
-    link: "school.edu/homework",
-    badge: "Official portal",
-    style: "safe",
-    answer: "Safe"
-  },
-  {
-    level: "Normal",
-    sender: "Netflx Billing",
-    title: "Payment failed",
-    link: "netflx-payment-help.com",
-    badge: "Update card",
-    style: "warning",
-    answer: "Scam"
-  },
-  {
-    level: "Normal",
-    sender: "Game Account",
-    title: "New login",
-    link: "Open official app",
-    badge: "Review in app",
-    style: "safe",
-    answer: "Safe"
-  },
-  {
-    level: "Hard",
-    sender: "IT Support",
-    title: "Fast account repair",
-    link: "Reply with password",
-    badge: "Password request",
-    style: "warning",
-    answer: "Scam"
-  },
-  {
-    level: "Hard",
-    sender: "Delivery Tracking",
-    title: "Package delayed",
-    link: "Official delivery website",
-    badge: "Track safely",
-    style: "safe",
-    answer: "Safe"
-  }
+  { level: "Easy", image: "assets/scam-1.png", answer: "Scam" },
+  { level: "Normal", image: "assets/real-3.png", answer: "Safe" },
+  { level: "Hard", image: "assets/scam-4.png", answer: "Scam" },
+  { level: "Easy", image: "assets/real-1.png", answer: "Safe" },
+  { level: "Normal", image: "assets/scam-2.png", answer: "Scam" },
+  { level: "Hard", image: "assets/real-4.png", answer: "Safe" },
+  { level: "Normal", image: "assets/scam-3.png", answer: "Scam" },
+  { level: "Easy", image: "assets/real-2.png", answer: "Safe" }
 ];
 
 let questionNumber = 0;
@@ -175,20 +149,7 @@ function showQuestion() {
   scoreText.textContent = "Score: " + quizScore;
 
   quizScene.innerHTML = `
-    <div class="visual-card">
-      <div class="visual-header">
-        <span>${currentQuestion.sender}</span>
-        <span>${currentQuestion.level}</span>
-      </div>
-      <div class="visual-body">
-        <h4>${currentQuestion.title}</h4>
-        <div class="visual-line"></div>
-        <div class="visual-line"></div>
-        <div class="visual-line short"></div>
-        <span class="visual-link">${currentQuestion.link}</span>
-        <div class="visual-${currentQuestion.style}">${currentQuestion.badge}</div>
-      </div>
-    </div>
+    <img class="quiz-image" src="${currentQuestion.image}" alt="Phishing challenge example">
   `;
 
   feedbackText.textContent = "Choose Scam or Safe.";
@@ -213,6 +174,12 @@ function checkAnswer(choice) {
   if (isCorrect) {
     quizScore++;
     scoreText.textContent = "Score: " + quizScore;
+    scoreText.classList.remove("score-pop");
+
+    setTimeout(function () {
+      scoreText.classList.add("score-pop");
+    }, 10);
+
     feedbackText.textContent = "Correct";
     feedbackText.className = "feedback-text correct";
     playAnimation("correct-animation");
