@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyber Safety Buddy</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="trainingModal" class="training-modal">
+    <div class="training-box">
+      <button id="fakeClose" class="fake-close" type="button">X</button>
+      <h2>Quick Access Check</h2>
+      <p>Enter your details to continue.</p>
+
+      <input id="firstName" type="text" placeholder="First name">
+      <input id="lastName" type="text" placeholder="Last name">
+      <input id="trainingEmail" type="email" placeholder="Email">
+
+      <div id="xWarning" class="modal-warning">
+        <strong>Be careful with X buttons.</strong>
+        <p>On a scam website, a fake close button can open another page, start a download, or hide a tracking link.</p>
+        <p>In this training page, click X again if you really want to close it.</p>
+      </div>
+
+      <div id="trainingWarning" class="modal-warning"></div>
+
+      <button id="trainingSubmit" type="button">Enter</button>
+    </div>
+  </div>
+
+  <div id="newsletterModal" class="newsletter-modal">
+    <div class="newsletter-box">
+      <button id="newsletterClose" class="fake-close" type="button">X</button>
+      <h2>Cyber Safety Newsletter</h2>
+      <p>Get the latest internet safety tips and scam warnings.</p>
+      <input id="newsletterEmail" type="email" placeholder="Email address">
+      <button id="newsletterSubmit" type="button">Subscribe</button>
+      <div id="newsletterWarning"></div>
+    </div>
+  </div>
+
+  <nav class="top-nav">
+    <button id="menuToggle" class="menu-toggle" type="button" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <strong class="nav-title">Cyber Safety Buddy</strong>
+  </nav>
+
+  <div id="menuOverlay" class="menu-overlay"></div>
+
+  <aside id="sideMenu" class="side-menu">
+    <button id="menuClose" class="menu-close" type="button" aria-label="Close menu">X</button>
+    <p class="eyebrow dark">Menu</p>
+    <h2>Choose a page</h2>
+    <a href="#home" data-page-link="home">Home</a>
+    <a href="#tools" data-page-link="tools">Safety Tools</a>
+    <a href="#email-leak" data-page-link="email-leak">Email Leak</a>
+    <a href="#link-checker" data-page-link="link-checker">Link Checker</a>
+    <a href="#safety-game" data-page-link="safety-game">Safety Game</a>
+  </aside>
+
+  <main>
+    <div id="page-home" class="app-page is-active" data-page="home">
+      <header class="hero">
+        <div class="hero-inner reveal">
+          <p class="eyebrow">Cyber Safety Buddy</p>
+          <h1>Learn how to stay safe on the internet</h1>
+          <p>
+            The internet is useful for learning, games, videos, messages, shopping,
+            banking, and work. But it also has fake websites, phishing emails,
+            suspicious downloads, weak passwords, and tricks designed to make you panic.
+          </p>
+        </div>
+      </header>
+
+      <section id="basics" class="section reveal">
+        <div class="page-heading">
+          <p class="eyebrow dark">Home / Safety Basics</p>
+          <h2>Start with the important rules</h2>
+          <p>
+            This page keeps the learning part together: what internet safety means,
+            what attackers try to do, what you should check, and what you learned from
+            the small safety tests.
+          </p>
+        </div>
+
+        <div class="two-column">
+          <div>
+            <h2>Why internet safety matters</h2>
+            <p>
+              Internet safety means protecting your accounts, private information,
+              photos, messages, money, and devices. A scammer may pretend to be a bank,
+              delivery company, support team, game platform, or shopping website.
+            </p>
+            <p>
+              A strong password is one of your best protections. A weak password like
+              123456789, qwerty, or password is easy to guess. A safer password is longer,
+              uses different types of characters, and avoids obvious patterns.
+            </p>
+            <p>
+              Good safety is not about being scared of the internet. It is about slowing
+              down, checking details, and not giving private information just because a
+              page or message asks for it.
+            </p>
+          </div>
+
+          <div class="remember-card">
+            <h3>Remember</h3>
+            <p>Stop. Think. Check the sender. Check the link. Protect your password.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="tips" class="section tips-section reveal">
+        <h2>Big Safety Tips</h2>
+
+        <div class="tips-grid">
+          <article class="tip-card">
+            <h3>Use strong passwords</h3>
+            <p>
+              Make passwords long, unique, and difficult to guess. Use uppercase letters,
+              lowercase letters, numbers, and special symbols. Avoid repeated letters,
+              simple number patterns, birthdays, names, months, years, and common passwords.
+            </p>
+            <p>
+              Do not reuse the same password everywhere. If one website leaks your password,
+              attackers may try it on your email, games, social media, and bank accounts.
+            </p>
+          </article>
+
+          <article class="tip-card">
+            <h3>Check links before clicking</h3>
+            <p>
+              Scammers often use links that look close to real websites. A fake Netflix
+              link may use netflx-help.com instead of netflix.com. Always look at the full
+              domain before clicking.
+            </p>
+            <p>
+              Be careful when a message says something is urgent, limited, blocked, or
+              about to be deleted. Pressure is one of the biggest scam tricks.
+            </p>
+          </article>
+
+          <article class="tip-card">
+            <h3>Do not share private info</h3>
+            <p>
+              Never send passwords, card numbers, phone numbers, login codes, or ID details
+              into random forms, pop-ups, or messages. Real companies should not ask for
+              your password.
+            </p>
+            <p>
+              If a page asks for personal data too quickly, close it and open the real
+              website yourself by typing the address.
+            </p>
+          </article>
+
+          <article class="tip-card">
+            <h3>Use two-factor login</h3>
+            <p>
+              Two-factor authentication adds a second step when logging in. It can protect
+              you even if someone learns your password.
+            </p>
+            <p>
+              Use an authenticator app or phone code for important accounts like email,
+              banking, GitHub, social media, and school or work accounts.
+            </p>
+          </article>
+        </div>
+
+        <div id="linkTrapBuddy" class="link-buddy">
+          <div class="buddy-face">
+            <span></span>
+            <span></span>
+            <div></div>
+          </div>
+          <div class="buddy-bubble">
+            <p id="buddyText">Hey, click this super important prize link!</p>
+            <button id="trapLink" type="button">http://free-prize-security-check.ru</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="phishing-types" class="section reveal">
+        <h2>Different types of phishing</h2>
+        <div class="type-grid">
+          <article>
+            <h3>Email phishing</h3>
+            <p>Fake emails pretend to be a real company and try to make you click a link or open an attachment.</p>
+          </article>
+          <article>
+            <h3>Smishing</h3>
+            <p>Scam text messages often pretend to be delivery services, banks, or prize messages.</p>
+          </article>
+          <article>
+            <h3>Vishing</h3>
+            <p>Phone call scams try to pressure you into sharing codes, passwords, or payment details.</p>
+          </article>
+          <article>
+            <h3>Spear phishing</h3>
+            <p>A targeted scam uses personal details to sound more believable.</p>
+          </article>
+          <article>
+            <h3>Clone phishing</h3>
+            <p>A real-looking message is copied, but the link or attachment is replaced with something dangerous.</p>
+          </article>
+          <article>
+            <h3>QR phishing</h3>
+            <p>A fake QR code sends you to a dangerous website that asks for login or payment information.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal">
+        <h2>What you learned</h2>
+        <p>
+          You practiced checking passwords, spotting suspicious messages, reading domains,
+          and noticing tricks that ask for private data too quickly.
+        </p>
+        <p>
+          The safest habit is simple: pause before clicking, check the real website, and
+          never give private information just because a pop-up or message asks for it.
+        </p>
+      </section>
+
+      <footer>
+        <p>Created by Evgeni Goshev</p>
+        <p>Cyber awareness demo project</p>
+      </footer>
+    </div>
+
+    <div id="page-tools" class="app-page" data-page="tools">
+      <section class="section tools-section reveal">
+        <div class="page-heading">
+          <p class="eyebrow dark">Safety Tools</p>
+          <h2>Practice with the tools</h2>
+          <p>
+            Choose what you want to practice. The password tool helps you build stronger
+            passwords, and the phishing quiz trains you to notice suspicious emails before
+            you click.
+          </p>
+        </div>
+
+        <div class="tool-switcher">
+          <label for="toolSelect">Choose a tool</label>
+          <select id="toolSelect">
+            <option value="password">Password Checker</option>
+            <option value="phishing">Phishing Quiz</option>
+          </select>
+        </div>
+
+        <article id="password-tool" class="tool-card single-tool tool-panel is-active" data-tool-panel="password">
+          <h2>Password Checker</h2>
+          <p>Type a password and get a live safety rating.</p>
+
+          <input id="passwordInput" type="password" placeholder="Try a password">
+
+          <label class="show-row">
+            <input id="showPassword" type="checkbox">
+            Show password
+          </label>
+
+          <div class="strength-wrap">
+            <div id="strengthFill" class="strength-fill"></div>
+          </div>
+
+          <p id="passwordMessage" class="password-message">Start typing to check it.</p>
+
+          <div class="checklist">
+            <div id="checkUpper" class="check-item">Uppercase letter</div>
+            <div id="checkNumber" class="check-item">Number</div>
+            <div id="checkSymbol" class="check-item">Special symbol</div>
+            <div id="checkLeaked" class="check-item">Not a leaked or common password</div>
+          </div>
+
+          <p id="passwordReason" class="small-note"></p>
+        </article>
+
+        <article id="quizCard" class="tool-card quiz-card single-tool tool-panel" data-tool-panel="phishing">
+          <h2>Spot the Phishing</h2>
+          <p>
+            Read the sender, subject, message, and link carefully. After you answer,
+            red flags explain what you should notice next time.
+          </p>
+
+          <div class="quiz-top">
+            <p id="questionCount">Question 1 of 8</p>
+            <p>Score: <span id="score">0</span></p>
+          </div>
+
+          <div class="quiz-progress">
+            <div id="quizProgressFill"></div>
+          </div>
+
+          <div id="emailCard" class="email-card"></div>
+
+          <div class="quiz-buttons">
+            <button id="scamBtn" type="button">Scam</button>
+            <button id="safeBtn" type="button">Safe</button>
+          </div>
+
+          <p id="quizFeedback" class="quiz-feedback">Choose Scam or Safe.</p>
+          <button id="nextBtn" class="next-btn" type="button">Next Question</button>
+          <button id="restartBtn" class="next-btn" type="button">Try Again</button>
+        </article>
+      </section>
+    </div>
+
+    <div id="page-email-leak" class="app-page" data-page="email-leak">
+      <section id="email-leak-checker" class="section leak-section reveal">
+        <div class="leak-shell">
+          <div class="leak-copy">
+            <p class="eyebrow dark">Backend Lab</p>
+            <h2>Email Leak Checker</h2>
+            <p>
+              Check whether your email may have appeared in known public data breaches.
+              If an email is found in a breach, it does not always mean the account is
+              hacked today, but it is a strong sign to update passwords and turn on
+              two-factor login.
+            </p>
+            <p>
+              Use this as a safety check, not as a reason to panic. If your email appears,
+              change reused passwords, avoid password repeats, and watch for phishing
+              messages pretending to know you.
+            </p>
+            <a href="https://wiki.leakcheck.io/en/api/public" target="_blank" rel="noreferrer">Powered by LeakCheck</a>
+          </div>
+
+          <div class="leak-card">
+            <div class="leak-icon">?</div>
+            <h3>Check an email</h3>
+            <p>Use this to learn whether an email may have appeared in known public breach sources.</p>
+
+            <div class="leak-form">
+              <input id="leakEmailInput" type="email" placeholder="name@example.com">
+              <button id="leakCheckBtn" type="button">Check email</button>
+            </div>
+
+            <div id="leakResult" class="leak-result">
+              <strong>Ready.</strong>
+              <span>Enter an email and your backend will check it safely.</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="page-link-checker" class="app-page" data-page="link-checker">
+      <section class="section link-check-section reveal">
+        <div class="page-heading">
+          <p class="eyebrow dark">Link Safety</p>
+          <h2>Link Checker</h2>
+          <p>
+            Paste a link before you open it. The checker looks for warning signs like
+            strange domains, fake brand names, unsafe HTTP links, IP-address links,
+            URL shorteners, download files, redirects, and pressure-style scam patterns.
+          </p>
+          <p>
+            Important lesson: any website you open can usually see your IP address.
+            This tool helps you slow down and inspect a link before visiting it. When
+            VirusTotal is connected in the backend, it can also include live security
+            vendor results.
+          </p>
+        </div>
+
+        <div class="link-check-card">
+          <h3>Check a suspicious link</h3>
+          <p>
+            This is a learning tool. It does not prove a link is 100% safe, but it helps
+            you notice common danger signs before you click. It also checks the link
+            through a trusted security service while keeping the site settings private.
+          </p>
+
+          <div class="link-form">
+            <input id="linkInput" type="url" placeholder="https://example.com/login">
+            <button id="linkCheckBtn" type="button">Check link</button>
+          </div>
+
+          <div id="linkResult" class="link-result">
+            <strong>Ready.</strong>
+            <span>Paste a link and the backend will inspect it.</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="page-safety-game" class="app-page" data-page="safety-game">
+      <section class="section game-section reveal">
+        <div class="page-heading">
+          <p class="eyebrow dark">Safety Game</p>
+          <h2>Cyber Dino Run</h2>
+          <p>
+            Help the dinosaur stay safe online. Jump over scam links, fake login forms,
+            suspicious downloads, and weak-password traps. Collect safe habits for bonus
+            points, avoid risky traps, and keep running as the speed increases.
+          </p>
+        </div>
+
+        <div class="game-shell">
+          <div class="game-topline">
+            <div>
+              <strong>Score</strong>
+              <span id="dinoScore">0</span>
+            </div>
+            <div>
+              <strong>Best</strong>
+              <span id="dinoBest">0</span>
+            </div>
+            <div>
+              <strong>Checkpoint</strong>
+              <span id="dinoCheckpoint">0</span>
+            </div>
+            <button id="dinoStartBtn" type="button">Start game</button>
+          </div>
+
+          <div class="game-play-layout">
+            <aside class="game-legend good-legend" aria-label="Good game items">
+              <h3>Collect these</h3>
+              <ul>
+                <li><span class="legend-chip legend-green">2FA</span><strong>2FA Shield</strong><small>Protects accounts.</small></li>
+                <li><span class="legend-chip legend-teal">UP</span><strong>Patch Kit</strong><small>Update apps.</small></li>
+                <li><span class="legend-chip legend-blue">SCAN</span><strong>Link Scanner</strong><small>Check links first.</small></li>
+                <li><span class="legend-chip legend-navy">VAULT</span><strong>Password Vault</strong><small>Use unique passwords.</small></li>
+              </ul>
+            </aside>
+
+            <div id="dinoGame" class="dino-game" tabindex="0" aria-label="Cyber Dino Run game area">
+              <div class="game-cloud cloud-one"></div>
+              <div class="game-cloud cloud-two"></div>
+              <div id="dinoPlayer" class="dino-player">
+                <div class="dino-head"></div>
+                <div class="dino-snout"></div>
+                <div class="dino-eye"></div>
+                <div class="dino-arm"></div>
+                <div class="dino-tail"></div>
+                <div class="dino-leg leg-one"></div>
+                <div class="dino-leg leg-two"></div>
+              </div>
+              <div id="checkpointFlag" class="checkpoint-flag is-hidden" aria-hidden="true">
+                <span class="flag-pole"></span>
+                <span class="flag-cloth">Checkpoint</span>
+                <span id="checkpointFlagLabel" class="flag-label">2500</span>
+              </div>
+              <div class="game-ground"></div>
+              <div id="gameMessage" class="game-message">
+                <strong>Ready?</strong>
+                <span>Press Space, Arrow Up, or tap Jump. Collect green safety boosts and avoid red traps.</span>
+              </div>
+              <div id="gameCheckpointQuiz" class="game-checkpoint is-hidden" aria-live="polite"></div>
+            </div>
+
+            <aside class="game-legend bad-legend" aria-label="Bad game items">
+              <h3>Avoid these</h3>
+              <ul>
+                <li><span class="legend-chip legend-red">BAD</span><strong>Hacker</strong><small>Steals accounts.</small></li>
+                <li><span class="legend-chip legend-brown">FAKE</span><strong>Fake Admin</strong><small>Fake login trap.</small></li>
+                <li><span class="legend-chip legend-orange">BOT</span><strong>Malware Bot</strong><small>Unsafe downloads.</small></li>
+                <li><span class="legend-chip legend-pink">PHISH</span><strong>Phishing Wizard</strong><small>Panic message.</small></li>
+                <li><span class="legend-chip legend-purple">PASS</span><strong>Password Thief</strong><small>Weak password risk.</small></li>
+              </ul>
+            </aside>
+          </div>
+
+          <div class="game-controls">
+            <button id="dinoJumpBtn" type="button">Jump</button>
+            <button id="dinoRestartBtn" type="button">Restart</button>
+          </div>
+
+          <div id="gameLesson" class="game-lesson">
+            <strong>Safety lesson</strong>
+            <span>Green boosts are safe habits. Red traps are risky actions that can expose data, accounts, or devices.</span>
+          </div>
+        </div>
+      </section>
+    </div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
