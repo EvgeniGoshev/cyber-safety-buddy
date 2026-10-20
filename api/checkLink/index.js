@@ -110,7 +110,7 @@ async function getVirusTotalReport(url, apiKey) {
 
 module.exports = async function (context, req) {
   const rawUrl = req.body && req.body.url;
-  const virusTotalApiKey = process.env.VIRUSTOTAL_API_KEY;
+  const virusTotalApiKey = process.env.VIRUSTOTAL_API_KEY || null;
   const normalized = normalizeUrl(rawUrl);
   const flags = [];
   let score = 0;

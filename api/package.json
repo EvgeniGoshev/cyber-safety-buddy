@@ -2,6 +2,7 @@
   "name": "cyber-safety-buddy-api",
   "version": "1.0.0",
   "private": true,
+  "engines": { "node": ">=22" },
   "dependencies": {
     "@azure/data-tables": "^13.3.1"
   }

@@ -702,15 +702,23 @@ const EMAIL_LEAK_API_URL = "/api/checkEmailLeak";
 
 function setLeakResult(type, title, message, sources = []) {
   leakResult.className = `leak-result ${type}`;
-  const sourceList = sources.length
-    ? `<ul class="leak-sources">${sources.map((source) => `<li>${source}</li>`).join("")}</ul>`
-    : "";
+  leakResult.replaceChildren();
+  const heading = document.createElement("strong");
+  heading.textContent = title;
+  const description = document.createElement("span");
+  description.textContent = message;
+  leakResult.append(heading, description);
 
-  leakResult.innerHTML = `
-    <strong>${title}</strong>
-    <span>${message}</span>
-    ${sourceList}
-  `;
+  if (sources.length) {
+    const list = document.createElement("ul");
+    list.className = "leak-sources";
+    sources.forEach((source) => {
+      const item = document.createElement("li");
+      item.textContent = source;
+      list.append(item);
+    });
+    leakResult.append(list);
+  }
 }
 
 function getRisk(foundCount) {
@@ -799,15 +807,22 @@ const LINK_CHECK_API_URL = "/api/checkLink";
 
 function setLinkResult(type, title, message, flags = []) {
   linkResult.className = `link-result ${type}`;
-  const flagList = flags.length
-    ? `<ul>${flags.map((flagItem) => `<li>${flagItem}</li>`).join("")}</ul>`
-    : "";
+  linkResult.replaceChildren();
+  const heading = document.createElement("strong");
+  heading.textContent = title;
+  const description = document.createElement("span");
+  description.textContent = message;
+  linkResult.append(heading, description);
 
-  linkResult.innerHTML = `
-    <strong>${title}</strong>
-    <span>${message}</span>
-    ${flagList}
-  `;
+  if (flags.length) {
+    const list = document.createElement("ul");
+    flags.forEach((flagItem) => {
+      const item = document.createElement("li");
+      item.textContent = flagItem;
+      list.append(item);
+    });
+    linkResult.append(list);
+  }
 }
 
 if (linkCheckBtn) {
