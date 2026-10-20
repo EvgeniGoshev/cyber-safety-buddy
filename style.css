@@ -1931,251 +1931,198 @@ footer {
 }
 
 .scam-obstacle {
-  border: 3px solid var(--bad);
-  background:
-    radial-gradient(circle at 30px 18px, #172033 0 6px, transparent 7px),
-    radial-gradient(circle at 50px 18px, #172033 0 6px, transparent 7px),
-    linear-gradient(135deg, #fff2ef 0%, #ffe5df 100%);
-  color: var(--bad);
+  box-sizing: border-box;
+  height: 84px;
+  min-height: 84px;
+  padding: 38px 8px 8px;
+  border: 3px solid #b42318;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #fff2ef 0%, #ffe5df 100%);
+  color: #b42318;
   box-shadow: 0 12px 22px rgba(192, 57, 43, 0.2);
-  padding-top: 34px;
+  line-height: 1.15;
   animation: enemyGlitch 1.8s steps(2) infinite;
 }
 
 .scam-obstacle::before {
-  content: "";
+  content: "!";
   position: absolute;
-  top: 10px;
-  left: 25px;
-  width: 34px;
-  height: 18px;
-  border-bottom: 4px solid #172033;
-  border-radius: 0 0 22px 22px;
+  top: 7px;
+  left: 50%;
+  width: 28px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  transform: translateX(-50%);
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 900;
 }
 
 .scam-obstacle.hacker {
   border-color: #b42318;
-  background:
-    radial-gradient(circle at 30px 18px, #0f172a 0 6px, transparent 7px),
-    radial-gradient(circle at 50px 18px, #0f172a 0 6px, transparent 7px),
-    linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #7f1d1d;
 }
 
-.scam-obstacle.hacker::after {
-  content: "< / >";
-  position: absolute;
-  top: 7px;
-  right: 10px;
-  color: #7f1d1d;
-  font-size: 12px;
+.scam-obstacle.hacker::before {
+  content: "</>";
+  width: 38px;
+  border-radius: 999px;
+  font-size: 10px;
 }
 
 .scam-obstacle.villain {
-  border-color: #7c2d12;
+  border-color: #9a3412;
+  background: linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%);
   color: #7c2d12;
-  background:
-    radial-gradient(circle at 32px 18px, #111827 0 6px, transparent 7px),
-    radial-gradient(circle at 52px 18px, #111827 0 6px, transparent 7px),
-    linear-gradient(135deg, #ffedd5 0%, #fed7aa 100%);
 }
 
 .scam-obstacle.villain::before {
-  border-bottom-color: #7c2d12;
-  transform: rotate(180deg);
+  content: "FAKE";
+  width: 42px;
+  font-size: 8px;
 }
 
 .scam-obstacle.bot {
-  border-color: var(--warn);
-  color: var(--warn);
-  background:
-    radial-gradient(circle at 31px 19px, #f59e0b 0 6px, transparent 7px),
-    radial-gradient(circle at 53px 19px, #f59e0b 0 6px, transparent 7px),
-    linear-gradient(135deg, #fff7e8 0%, #ffedd5 100%);
-}
-
-.scam-obstacle.bot::after {
-  content: "";
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  width: 4px;
-  height: 18px;
-  background: var(--warn);
-  transform: translateX(-50%);
+  border-color: #d97706;
+  background: linear-gradient(135deg, #fff7e8 0%, #ffedd5 100%);
+  color: #92400e;
 }
 
 .scam-obstacle.password {
   border-color: #7c3aed;
+  background: linear-gradient(135deg, #f4efff 0%, #ede9fe 100%);
   color: #5b21b6;
-  background:
-    radial-gradient(circle at 30px 18px, #4c1d95 0 6px, transparent 7px),
-    radial-gradient(circle at 50px 18px, #4c1d95 0 6px, transparent 7px),
-    linear-gradient(135deg, #f4efff 0%, #ede9fe 100%);
+}
+
+.scam-obstacle.password::before {
+  content: "#";
+  border-radius: 999px;
 }
 
 .scam-obstacle.wizard {
   border-color: #be185d;
+  background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
   color: #9d174d;
-  background:
-    radial-gradient(circle at 30px 20px, #831843 0 6px, transparent 7px),
-    radial-gradient(circle at 50px 20px, #831843 0 6px, transparent 7px),
-    linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
 }
 
-.scam-obstacle.wizard::after {
+.scam-obstacle.wizard::before {
   content: "?";
-  position: absolute;
-  top: -13px;
-  right: 16px;
-  width: 24px;
-  height: 24px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #be185d;
-  color: white;
+  border-radius: 999px;
 }
 
 .pickup-item {
+  box-sizing: border-box;
   width: 110px;
-  min-height: 58px;
+  height: 72px;
+  min-height: 72px;
   bottom: 158px;
+  padding: 36px 8px 8px;
   border: 3px solid #16834a;
-  background:
-    radial-gradient(circle at 50% 18px, rgba(22, 131, 74, 0.18) 0 17px, transparent 18px),
-    linear-gradient(135deg, #e9f8ef 0%, #d9fbe8 100%);
+  border-radius: 14px;
+  background: linear-gradient(135deg, #e9f8ef 0%, #d9fbe8 100%);
   color: #13723f;
   box-shadow: 0 12px 22px rgba(22, 131, 74, 0.18);
+  line-height: 1.15;
   animation: pickupFloat 1.4s ease-in-out infinite;
-  padding-top: 28px;
 }
 
 .pickup-item::before {
-  content: "";
+  content: "+";
   position: absolute;
-  top: 11px;
+  top: 6px;
   left: 50%;
-  width: 34px;
-  height: 18px;
-  border: 4px solid #16834a;
-  border-top: 0;
-  border-radius: 0 0 18px 18px;
+  width: 30px;
+  height: 24px;
+  display: grid;
+  place-items: center;
   transform: translateX(-50%);
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  background: #fff;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 900;
 }
 
 .pickup-item.scanner::after {
-  content: "";
-  position: absolute;
-  top: 17px;
-  left: 20px;
-  right: 20px;
-  height: 3px;
-  background: #22c55e;
-  box-shadow: 0 0 12px #22c55e;
-  animation: scannerSweep 1.1s ease-in-out infinite;
+  content: none;
 }
 
 .pickup-item.shield::before {
-  height: 28px;
-  border-radius: 18px 18px 22px 22px;
+  content: "2FA";
+  width: 38px;
+  border-radius: 999px;
+  font-size: 9px;
 }
 
 .pickup-item.patch {
   border-color: #0f766e;
-  color: #115e59;
   background: linear-gradient(135deg, #ccfbf1 0%, #99f6e4 100%);
+  color: #115e59;
 }
 
 .pickup-item.patch::before {
-  border-color: #0f766e;
+  content: "UP";
 }
 
 .pickup-item.link-scan {
   border-color: #0891b2;
+  background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
   color: #155e75;
-  background:
-    radial-gradient(circle at 50% 18px, rgba(8, 145, 178, 0.18) 0 17px, transparent 18px),
-    linear-gradient(135deg, #ecfeff 0%, #cffafe 100%);
 }
 
 .pickup-item.link-scan::before {
-  border-color: #0891b2;
-  border-radius: 999px;
+  content: "SCAN";
+  width: 44px;
+  font-size: 8px;
 }
 
 .pickup-item.vault {
   border-color: #1d4ed8;
-  color: #1e3a8a;
   background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  color: #1e3a8a;
 }
 
 .pickup-item.vault::before {
-  border-color: #1d4ed8;
+  content: "KEY";
 }
 
 .pickup-item.bad-pickup {
   bottom: 132px;
   border-color: var(--bad);
-  background:
-    radial-gradient(circle at 50% 18px, rgba(192, 57, 43, 0.14) 0 17px, transparent 18px),
-    linear-gradient(135deg, #fff1f0 0%, #ffe0dd 100%);
+  background: linear-gradient(135deg, #fff1f0 0%, #ffe0dd 100%);
   color: var(--bad);
   box-shadow: 0 12px 22px rgba(192, 57, 43, 0.18);
 }
 
 .pickup-item.bad-pickup::before {
-  border-color: var(--bad);
-  border-radius: 6px;
-  transform: translateX(-50%) rotate(45deg);
-}
-
-.pickup-item.popup {
-  border-style: dashed;
-}
-
-.pickup-item.popup::after {
   content: "!";
-  position: absolute;
-  top: 7px;
-  right: 11px;
-  width: 22px;
-  height: 22px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--bad);
-  color: white;
-  font-size: 13px;
+  border-color: var(--bad);
+  border-radius: 8px;
 }
 
-.pickup-item.tracker {
-  border-color: #7f1d1d;
-  color: #7f1d1d;
-  background:
-    radial-gradient(circle at 50% 18px, rgba(127, 29, 29, 0.16) 0 17px, transparent 18px),
-    linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-}
-
-.pickup-item.tracker::after {
-  content: "";
-  position: absolute;
-  top: 13px;
-  right: 14px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #7f1d1d;
-  box-shadow: 0 0 0 6px rgba(127, 29, 29, 0.13);
+.pickup-item.tracker::before {
+  content: "EYE";
+  width: 38px;
+  font-size: 8px;
 }
 
 .pickup-item.leak {
   border-color: #be123c;
+  background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
   color: #9f1239;
-  background:
-    linear-gradient(90deg, rgba(190, 18, 60, 0.14) 0 8px, transparent 8px 16px),
-    linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
 }
 
+.pickup-item.leak::before {
+  content: "DATA";
+  width: 40px;
+  font-size: 8px;
+}
 .score-pop {
   position: absolute;
   left: 96px;
@@ -2530,3 +2477,4 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+
