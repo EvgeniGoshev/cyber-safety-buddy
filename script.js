@@ -420,12 +420,17 @@ const newsletterEmail = document.getElementById("newsletterEmail");
 const newsletterSubmit = document.getElementById("newsletterSubmit");
 const newsletterClose = document.getElementById("newsletterClose");
 const newsletterWarning = document.getElementById("newsletterWarning");
+const NEWSLETTER_SEEN_KEY = "cyberSafetyNewsletterSeen";
 
-setTimeout(() => {
-  newsletterModal.classList.add("is-visible");
-}, 60000);
+if (localStorage.getItem(NEWSLETTER_SEEN_KEY) !== "yes") {
+  setTimeout(() => {
+    newsletterModal.classList.add("is-visible");
+    localStorage.setItem(NEWSLETTER_SEEN_KEY, "yes");
+  }, 60000);
+}
 
 newsletterSubmit.addEventListener("click", () => {
+  localStorage.setItem(NEWSLETTER_SEEN_KEY, "yes");
   trackEvent("newsletter_test_triggered");
   newsletterWarning.innerHTML = `
     <div class="angry-buddy">
@@ -454,6 +459,7 @@ newsletterSubmit.addEventListener("click", () => {
 });
 
 newsletterClose.addEventListener("click", () => {
+  localStorage.setItem(NEWSLETTER_SEEN_KEY, "yes");
   newsletterModal.classList.remove("is-visible");
 });
 
